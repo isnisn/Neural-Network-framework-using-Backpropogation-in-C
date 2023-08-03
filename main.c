@@ -23,7 +23,7 @@ int main(void)
     printf("Enter the number of Layers in Neural Network:\n");
     scanf("%d",&num_layers);
 
-    num_neurons = (int*) malloc(num_layers * sizeof(int));
+    num_neurons = malloc(num_layers * sizeof(int));
     memset(num_neurons,0,num_layers *sizeof(int));
 
     // Get number of neurons per layer
@@ -50,19 +50,19 @@ int main(void)
     scanf("%d",&num_training_ex);
     printf("\n");
 
-    input = (float**) malloc(num_training_ex * sizeof(float*));
+    input = malloc(num_training_ex * sizeof(float*));
     for(i=0;i<num_training_ex;i++)
     {
-        input[i] = (float*)malloc(num_neurons[0] * sizeof(float));
+        input[i] = malloc(num_neurons[0] * sizeof(float));
     }
 
-    desired_outputs = (float**) malloc(num_training_ex* sizeof(float*));
+    desired_outputs = malloc(num_training_ex* sizeof(float*));
     for(i=0;i<num_training_ex;i++)
     {
-        desired_outputs[i] = (float*)malloc(num_neurons[num_layers-1] * sizeof(float));
+        desired_outputs[i] = malloc(num_neurons[num_layers-1] * sizeof(float));
     }
 
-    cost = (float *) malloc(num_neurons[num_layers-1] * sizeof(float));
+    cost = malloc(num_neurons[num_layers-1] * sizeof(float));
     memset(cost,0,num_neurons[num_layers-1]*sizeof(float));
 
     // Get Training Examples
@@ -145,7 +145,7 @@ void feed_input(int i)
 int create_architecture()
 {
     int i=0,j=0;
-    lay = (layer*) malloc(num_layers * sizeof(layer));
+    lay = malloc(num_layers * sizeof(layer));
 
     for(i=0;i<num_layers;i++)
     {
